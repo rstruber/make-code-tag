@@ -18,9 +18,11 @@ input.onGesture(Gesture.TiltRight, function () {
     runner.change(LedSpriteProperty.Y, -1)
 })
 let runner: game.LedSprite = null
-let tagger = game.createSprite(2, 2)
+let tagger = game.createSprite(0, 0)
 runner = game.createSprite(4, 4)
 tagger.set(LedSpriteProperty.Blink, 786)
 basic.forever(function () {
-	
+    if (runner.isTouching(tagger)) {
+        game.gameOver()
+    }
 })
