@@ -1,5 +1,5 @@
 {
-    "name": "start",
+    "name": "tag",
     "description": "",
     "dependencies": {
         "core": "*",
