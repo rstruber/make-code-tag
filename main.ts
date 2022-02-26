@@ -25,7 +25,6 @@ let Tagger_2_x = 0
 let tagger_2_y = 0
 let tagger_2: game.LedSprite = null
 let runner: game.LedSprite = null
-let _4567 = 0
 let tagger = game.createSprite(0, 0)
 let tagger_x = 0
 let tagger_y = 0
@@ -35,34 +34,33 @@ let runner_x = 4
 let runner_y = 4
 let time = 0
 basic.forever(function () {
-    _4567 = 0
-    basic.pause(2000)
+    basic.pause(1000)
     if (randint(0, 3) == 0) {
         tagger.change(LedSpriteProperty.X, 1)
-        basic.pause(2000)
     } else if (randint(0, 3) == 1) {
         tagger.change(LedSpriteProperty.Y, 1)
-        basic.pause(2000)
     } else if (randint(0, 3) == 2) {
         tagger.change(LedSpriteProperty.Y, -1)
-        basic.pause(2000)
     } else if (randint(0, 3) == 3) {
         tagger.change(LedSpriteProperty.X, -1)
-        basic.pause(2000)
     }
 })
 basic.forever(function () {
     basic.pause(1000)
     time += 1
+    game.setScore(Math.ceil(time / 60 * 20))
     if (time == 120) {
         tagger_2 = game.createSprite(2, 2)
         tagger_2_y = 2
         Tagger_2_x = 2
     }
+    if (time == 260) {
+        basic.showString("you win!")
+        game.gameOver()
+    }
 })
 basic.forever(function () {
     if (runner.isTouching(tagger)) {
-        game.setScore(Math.ceil(time / 60 * 20))
         game.gameOver()
     }
 })
